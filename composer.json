@@ -1,8 +1,9 @@
 {
     "name": "hsyir/ngn",
     "type": "package",
+    "description": "",
     "require": {
-        "illuminate/support": "6.0"
+        "illuminate/support": "8.*"
     },
     "license": "MIT",
     "authors": [
@@ -11,5 +12,8 @@
             "email": "hosseinyaghmaee@gmail.com"
         }
     ],
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "require-dev": {
+        "orchestra/testbench": "6"
+    }
 }
