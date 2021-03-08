@@ -1,0 +1,15 @@
+{
+    "name": "hsyir/ngn",
+    "type": "package",
+    "require": {
+        "illuminate/support": "6.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Hossein",
+            "email": "hosseinyaghmaee@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}
