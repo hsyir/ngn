@@ -20,6 +20,7 @@ class CreateNumbersTable extends Migration
             $table->string("number");
             $table->bigInteger("price")->nullable();
             $table->string("category")->nullable();
+            $table->integer("status")->nullable();
             $table->unsignedinteger("category_id")->nullable();
             $table->string("comment")->nullable();
             $table->timestamps();
