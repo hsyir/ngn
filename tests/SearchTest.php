@@ -46,8 +46,8 @@ class SearchTest extends TestCase
     {
         $ngn = new Center();
         $result = $ngn->search("021", "9999", "2525");
-        dd($result);
-        $this->assertEquals("2525",$result->number);
+
+        $this->assertNull($result);
     }
 
 }
