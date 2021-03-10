@@ -18,6 +18,10 @@ class HsyNgnServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/../config/ngn.php' => config_path('ngn.php'),
         ], 'config');
+
+        $this->publishes([
+            __DIR__ . '/../database/migrations/' => database_path('migrations')
+        ], 'migrations');
     }
 
     public function register()
