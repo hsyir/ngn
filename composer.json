@@ -30,5 +30,15 @@
     "test": "php vendor/phpunit/phpunit/phpunit",
     "test-debug": "php vendor/phpunit/phpunit/phpunit --debug",
     "test-coverage": "php vendor/phpunit/phpunit/phpunit"
+  },
+  "extra": {
+    "laravel": {
+      "aliases": {
+        "NgnCenter": "Hsy\\Ngn\\Facades\\Ngn"
+      },
+      "providers": [
+        "Hsy\\Ngn\\HsyNgnServiceProvider"
+      ]
+    }
   }
 }
