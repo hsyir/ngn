@@ -2,11 +2,9 @@
 
 namespace Hsy\Ngn\Tests;
 
-use Hsy\AnsweringSystem\Providers\AnsweringSystemServiceProvider;
-use Hsy\Permissions\HsyPermissionsServiceProvider;
+use Hsy\Ngn\HsyNgnServiceProvider;
+use Hsy\Ngn\Models\Number;
 use Illuminate\Database\Schema\Blueprint;
-use Spatie\Permission\Models\Permission;
-use Spatie\Permission\PermissionServiceProvider;
 
 abstract class TestCase extends \Orchestra\Testbench\TestCase
 {
@@ -19,15 +17,14 @@ abstract class TestCase extends \Orchestra\Testbench\TestCase
     {
         parent::setUp();
 //        $this->withFactories(__DIR__ . '/../database/factories');
-//        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
-     /*   $this->artisan("migrate", [
-            "--database" => "testing",
-            "--realpath" => realpath(__DIR__ . "../vendor/spatie/laravel-permission/database/migrations/create_permission_tables.php.stub")
-        ])->run();*/
+        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+        /*   $this->artisan("migrate", [
+               "--database" => "testing",
+               "--realpath" => realpath(__DIR__ . "../vendor/spatie/laravel-permission/database/migrations/create_permission_tables.php.stub")
+           ])->run();*/
 
         $this->setUpDatabase($this->app);
 
-        $this->testUser = User::first();
     }
 
     /**
@@ -40,8 +37,7 @@ abstract class TestCase extends \Orchestra\Testbench\TestCase
     protected function getPackageProviders($app)
     {
         return [
-            HsyPermissionsServiceProvider::class,
-            PermissionServiceProvider::class
+            HsyNgnServiceProvider::class,
         ];
     }
 
@@ -55,7 +51,6 @@ abstract class TestCase extends \Orchestra\Testbench\TestCase
     protected function getPackageAliases($app)
     {
         return [
-//            'Press' => 'Hsy\\Store\\Facades\\Store',
         ];
     }
 
@@ -69,6 +64,20 @@ abstract class TestCase extends \Orchestra\Testbench\TestCase
     protected function getEnvironmentSetUp($app)
     {
         // Setup default database to use sqlite :memory:
+        $app['config']->set(
+            'ngn.drivers',
+            [
+                "Database" => [
+                    "0211111", "0219999"
+                ],
+                "api" => [
+                    "0514444"
+                ],
+                "NoDriver" => [
+                    "0317777"
+                ],
+            ]
+        );
         $app['config']->set('app.locale', 'fa');
         $app['config']->set('app.timezone', 'Asia/tehran');
         $app['config']->set('database.default', 'testdb');
@@ -76,7 +85,9 @@ abstract class TestCase extends \Orchestra\Testbench\TestCase
             'driver' => 'sqlite',
             'database' => ':memory:',
         ]);
+
     }
+
 
     /**
      * Set up the database.
@@ -85,17 +96,13 @@ abstract class TestCase extends \Orchestra\Testbench\TestCase
      */
     protected function setUpDatabase($app)
     {
-        $app['db']->connection()->getSchemaBuilder()->create('users', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('email');
-            $table->softDeletes();
-        });
-
-
-        include_once (__DIR__ . "/../vendor/spatie/laravel-permission/database/migrations/create_permission_tables.php.stub");
-
-        (new \CreatePermissionTables())->up();
-        User::create(['email' => 'test@user.com']);
+        Number::insert([
+            [
+                "pre_number"=>"021",
+                "mid_number"=>"9999",
+                "number"=>"1111",
+            ]
+        ]);
 
     }
 

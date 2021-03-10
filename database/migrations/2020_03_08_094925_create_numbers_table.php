@@ -18,8 +18,7 @@ class CreateNumbersTable extends Migration
             $table->string("pre_number");
             $table->string("mid_number");
             $table->string("number");
-            $table->string("full_number");
-            $table->longinteger("price");
+            $table->bigInteger("price")->nullable();
             $table->string("category")->nullable();
             $table->unsignedinteger("category_id")->nullable();
             $table->string("comment")->nullable();

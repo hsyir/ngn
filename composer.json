@@ -21,6 +21,11 @@
       "Hsy\\Ngn\\Tests\\": "tests"
     }
   },
+  "autoload": {
+    "psr-4": {
+      "Hsy\\Ngn\\": "src/"
+    }
+  },
   "scripts": {
     "test": "php vendor/phpunit/phpunit/phpunit",
     "test-debug": "php vendor/phpunit/phpunit/phpunit --debug",
