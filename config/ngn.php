@@ -6,8 +6,12 @@ return [
         "Database" => [
             "0210000"
         ],
-        "ApiOne" => [
+        "api" => [
             "0210001"
         ],
+    ],
+    "class-map"=>[
+        "database"=>\Hsy\Ngn\Drivers\DatabaseDriver::class,
+        "api"=>"App\\Ngn\\Drivers\\Api",
     ]
 ];

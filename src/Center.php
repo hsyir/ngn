@@ -23,12 +23,12 @@ class Center
         if (!$driverName)
             throw new \Exception("PreNumber Not Defined");
 
-        $driverClassName = $this->makeDriverClassName($driverName);
+        $driverClass = config("ngn.class-map." . $driverName);
 
-        if (!class_exists($driverClassName))
-            throw new \Exception("Driver Class Not Found: " . $driverClassName);
+        if (!$driverClass or !class_exists($driverClass))
+            throw new \Exception("Driver Class Not Found: " . $driverClass);
 
-        return new $driverClassName;
+        return new $driverClass;
     }
 
     private function getDriverName($preNumber, $midNumber)
@@ -46,12 +46,4 @@ class Center
             : null;
     }
 
-    /**
-     * @param $driverName
-     * @return string
-     */
-    private function makeDriverClassName($driverName): string
-    {
-        return "\\Hsy\\Ngn\\Drivers\\" . ucfirst($driverName)."Driver";
-    }
 }
