@@ -38,7 +38,8 @@ class DatabaseDriver implements DriverInterface
 
         $searchResponse->preNumber = $number->pre_number;
         $searchResponse->midNumber = $number->mid_number;
-        $searchResponse->number = $number->number;
+        $searchResponse->category = $number->category;
+        $searchResponse->status = $searchResponse::STATUS_UNKNOWN;
         return $searchResponse;
     }
 
