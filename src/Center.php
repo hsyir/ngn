@@ -4,6 +4,8 @@
 namespace Hsy\Ngn;
 
 
+use Hsy\Ngn\Exceptions\NotDefinedPreNumber;
+
 class Center
 {
     public function search($preNumber, $midNumber, $number)
@@ -21,7 +23,7 @@ class Center
         $driverName = $this->getDriverName($preNumber, $midNumber);
 
         if (!$driverName)
-            throw new \Exception("PreNumber Not Defined");
+            throw new NotDefinedPreNumber;
 
         $driverClass = config("ngn.class-map." . $driverName);
 
