@@ -18,4 +18,16 @@ class SearchResponse
     const STATUS_RESERVED="orange";
     const STATUS_UNKNOWN="gray";
 
+    public function toArray()
+    {
+        return [
+            "pre_number"=>$this->preNumber,
+            "mid_number"=>$this->midNumber,
+            "number"=>$this->number,
+            "price"=>$this->price,
+            "status"=>$this->status,
+            "category"=>$this->category,
+        ]
+    }
+
 }
