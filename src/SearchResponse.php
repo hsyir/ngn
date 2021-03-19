@@ -27,7 +27,7 @@ class SearchResponse
             "price"=>$this->price,
             "status"=>$this->status,
             "category"=>$this->category,
-        ]
+        ];
     }
 
 }
